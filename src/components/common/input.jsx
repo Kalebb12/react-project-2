@@ -10,6 +10,7 @@ const Input = ({type , name , placeholder ,value , onChange ,required,min}) => {
       onChange={onChange}
       required={required}
       minLength={min}
+      autoComplete="current-password"
     />
   );
 };

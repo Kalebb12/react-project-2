@@ -20,7 +20,7 @@ const Login = () => {
       />
       <form
         action=""
-        className="w-[455px] flex flex-col gap-[30px]"
+        className="w-[455px] flex flex-col gap-[30px] lg:p-0"
         onSubmit={(e) => {
           handleSubmit(e);
         }}
@@ -42,7 +42,7 @@ const Login = () => {
             </label>
             <br />
             <Input
-              type={"email"}
+              type={"text"}
               name={"email"}
               placeholder={"Robertfox@example.com"}
               value={email}
@@ -70,7 +70,7 @@ const Login = () => {
             />
           </div>
         </div>
-        <button className="bg-[var(--dark)] p-5 w-full text-white rounded-[10px]">
+        <button className="bg-[var(--dark)] p-5 text-white rounded-[10px]">
           Login
         </button>
       </form>
