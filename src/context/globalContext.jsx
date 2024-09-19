@@ -6,7 +6,7 @@ export const GlobalContext = createContext(null);
 
 export const GlobalState = ({ children }) => {
   const [user, setUser] = useState(null);
-
+  const [loading,setLoading] = useState(false)
   const login = async (email, password) => {
     try {
       const res = await fetch("https://api.escuelajs.co/api/v1/auth/login", {
@@ -41,6 +41,7 @@ export const GlobalState = ({ children }) => {
 
   const getUser = async () => {
     try {
+      setLoading(true)
       const res = await fetch("https://api.escuelajs.co/api/v1/auth/profile", {
         headers: {
           Authorization: `Bearer ${Cookies.get("AuthUser")}`,
@@ -52,28 +53,32 @@ export const GlobalState = ({ children }) => {
       }
 
       const user = await res.json();
+      setLoading(false);
       console.log(user);
       return user;
     } catch (error) {
+      setLoading(false)
       console.log("Error:", error.message);
     }
   };
 
+
   const register = async (userName, email, password) => {
     try {
-      const response = await fetch("https://api.escuelajs.co/api/v1/users/is-available",{
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      })
-      const isEmailAvailable = await response.json();
-
-      if(!isEmailAvailable.isAvailable){
-        toast.error("Email already exists");
-        return;
-      }
+      // const response = await fetch("https://api.escuelajs.co/api/v1/users/is-available",{
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({ email }),
+      // })
+      // const isEmailAvailable = await response.json();
+      // console.log(isEmailAvailable);
+      
+      // if(!isEmailAvailable.isAvailable){
+      //   toast.error("Email already exists");
+      //   return;
+      // }
 
       const res = await fetch("https://api.escuelajs.co/api/v1/users/", {
         method: "POST",
@@ -92,6 +97,8 @@ export const GlobalState = ({ children }) => {
       }
       const userObj = await res.json();
       console.log(userObj);
+      Cookies.set("AuthUser", userObj.access_token, { expires: 30 });
+      getUser().then((data) => setUser(data));
       toast.success("User registered successfully");
     } catch (error) {
       console.log(error);
@@ -118,6 +125,7 @@ export const GlobalState = ({ children }) => {
         userName,
         setUserName,
         register,
+        loading
       }}
     >
       {children}

@@ -6,11 +6,15 @@ import { Route, Routes, Navigate } from 'react-router-dom'
 import { useContext } from 'react'
 import { GlobalContext } from './context/globalContext'
 import Register from './pages/auth/register'
+import Spinner from './components/svgs/spinner'
 
 function App() {
-  const {user} = useContext(GlobalContext)
-
-
+  const {user ,loading} = useContext(GlobalContext)
+  if(loading){
+    return <div className='flex items-center justify-center w-full h-screen'>
+      <Spinner w={100} h={100}/>
+    </div>
+  }
   return (
     <div>
       <Toaster />
