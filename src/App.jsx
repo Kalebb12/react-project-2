@@ -18,7 +18,7 @@ function App() {
   return (
     <div>
       <Toaster />
-  
+      
       <Routes>
         <Route path="/" element={user?<HomePage />: <Navigate to="/login"/>} />
         <Route path="/login" element={!user?<Login />: <Navigate to="/"/>} />
