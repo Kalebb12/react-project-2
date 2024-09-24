@@ -7,6 +7,7 @@ import { useContext } from 'react'
 import { GlobalContext } from './context/globalContext'
 import Register from './pages/auth/register'
 import Spinner from './components/svgs/spinner'
+import ProductDetails from './pages/productDetails'
 
 function App() {
   const {user ,loading} = useContext(GlobalContext)
@@ -20,9 +21,10 @@ function App() {
       <Toaster />
       
       <Routes>
-        <Route path="/" element={user?<HomePage />: <Navigate to="/login"/>} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/login" element={!user?<Login />: <Navigate to="/"/>} />
         <Route path="/register" element={!user?<Register/>:<Navigate to="/"/>} />
+        <Route path='/productDetails/:id' element={<ProductDetails />} />
       </Routes>
     </div>
   )

@@ -41,11 +41,12 @@
 }
 
 .scrollbar-hidden::-webkit-scrollbar{
-  display: none;
+  display: none !important;
 }
 
 .scrollbar-hidden{
   scroll-snap-type: x mandatory !important;
+  scrollbar-width: none;
 }
 
 .scrollbar-hidden > div{
