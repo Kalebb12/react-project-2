@@ -3,8 +3,10 @@ import ProductCard from "./common/productCard";
 import UseFetch from "./hooks/useFetch";
 
 const ProductList = () => {
-    const {data :products, loading , err} = UseFetch()
-
+  const { data, loading, err } = UseFetch(
+    "https://dummyjson.com/products?sortBy=rating&order=desc&limit=10"
+  );
+  const products = data.products;
   return (
     <div className="flex flex-col gap-4 px-3 py-4">
       <div className="flex flex-col gap-1">
@@ -20,10 +22,7 @@ const ProductList = () => {
       <div className="flex w-full overflow-x-scroll gap-[30px] scrollbar-hidden">
         {products &&
           products.map((product) => {
-            
-            return (
-              <ProductCard key={product.id} product={product}/>
-            );
+            return <ProductCard key={product.id} product={product} />;
           })}
       </div>
     </div>
