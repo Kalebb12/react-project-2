@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 const ProductCard = ({ product }) => {
   const arr = Array(Math.floor(product.rating)).fill(null);
   return (
-    <div className="min-w-[270px] flex flex-col gap-4 relative items-start">
-      <Link to={"/productDetails/" + product.id}>
+    <Link to={"/productDetails/" + product.id}>
+      <div className="min-w-[270px] flex flex-col gap-4 relative items-start">
         <img
           src={product.images[0]}
           alt=""
@@ -54,8 +54,8 @@ const ProductCard = ({ product }) => {
             </span>
           </div>
         </div>
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 };
 

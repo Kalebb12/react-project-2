@@ -30,9 +30,16 @@ const ProductDetails = () => {
 
         {/* Make reusable component here */}
           {!loading && !err && (
-            <div className="flex gap-[70px] items-center justify-center">
+            <div className="flex gap-[70px] items-start justify-center">
               {/* images */}
-              <div></div>
+              <div className="grid-container">
+                {
+                  product.images.map((_,i)=>{
+                    return <div><img src={product.images[i]} alt={product.title} key={i} className=""/></div>
+                  })
+                }
+                <div className="cols"><img src={product.images[0]} alt="" className="object-contain w-full h-full"/></div>
+              </div>
 
               {/* details */}
               <div className="flex flex-col gap-6">

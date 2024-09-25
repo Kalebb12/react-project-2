@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import ProductCard from "./common/productCard";
 import UseFetch from "./hooks/useFetch";
 
@@ -23,6 +22,21 @@ const ProductList = () => {
         {products &&
           products.map((product) => {
             return <ProductCard key={product.id} product={product} />;
+          })}
+      </div>
+      <div className="flex w-full overflow-x-scroll gap-[30px] scrollbar-hidden">
+      {loading &&
+        Array(10)
+          .fill(null)
+          .map((_, i) => {
+            return (
+              <div className="min-w-[270px] flex flex-col gap-4" key={i}>
+                <div className="skeleton rounded w-[270px] h-[250px]"></div>
+                <div className="h-4 skeleton w-28"></div>
+                <div className="w-full h-4 skeleton"></div>
+                <div className="w-full h-4 skeleton"></div>
+              </div>
+            );
           })}
       </div>
     </div>
