@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
-const UseFetch = () => {
+const UseFetch = ({URL}) => {
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState(null);
   const [data, setData] = useState([]);
   useEffect(() => {
     setLoading(true);
     setErr(null);
-    fetch("https://dummyjson.com/products?sortBy=rating&order=desc&limit=10")
+    fetch(URL)
       .then((res) => {
         if (!res.ok) {
           throw(new Error("Failed To Fetch"))
