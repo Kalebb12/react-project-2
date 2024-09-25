@@ -18,7 +18,10 @@ const UseFetch = () => {
         setData(results.products);
         setLoading(false);
       })
-      .catch((error) => {});
+      .catch((error) => {
+        setErr(error.message)
+        setLoading(false)
+      });
   }, []);
 
   return { loading, err, data };
