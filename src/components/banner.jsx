@@ -4,39 +4,39 @@ import Slider from "./common/swiper";
 const Banner = () => {
   const links = [
     {
-      to: "",
+      to: "/category/Laptops",
       label: "Laptops",
     },
     {
-      to: "",
+      to: "/category/Beauty",
       label: "Beauty",
     },
     {
-      to: "",
+      to: "/category/Furniture",
       label: "Furniture",
     },
     {
-      to: "",
+      to: "/category/Groceries",
       label: "Groceries",
     },
     {
-      to: "",
+      to: "/category/Kitchen-Accessories",
       label: "Kitchen-Accessories",
     },
     {
-      to: "",
+      to: "/category/Mens-Shirts",
       label: "Mens-Shirts",
     },
     {
-      to: "",
+      to: "/category/Mens-Shoes",
       label: "Mens-Shoes",
     },
     {
-      to: "",
+      to: "/category/Mens-Watches",
       label: "Mens-Watches",
     },
     {
-      to: "",
+      to: "/category/Mobile-Accessories",
       label: "Mobile-Accessories",
     },
   ];
@@ -46,7 +46,7 @@ const Banner = () => {
         {links.map((link,i) => {
           return (
             <li key={i}>
-              <Link to="" className="no-underline cursor-pointer">
+              <Link to={link.to} className="no-underline cursor-pointer">
                 {link.label}
               </Link>
             </li>
